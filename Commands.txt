@@ -1,0 +1,210 @@
+-- Create certificate table
+CREATE TABLE certificate (
+  cert_id SERIAL,
+  cert_no VARCHAR(255) PRIMARY KEY,
+  device_name VARCHAR(255),
+  end_date VARCHAR(12),
+  next_date VARCHAR(12),
+  calibrated_for TEXT,
+  description TEXT,
+  env_conditions TEXT,
+  stds_used TEXT,
+  tracability TEXT,
+  procedure TEXT,
+  calibrated_by VARCHAR(255),
+  checked_by VARCHAR(255),
+  incharge VARCHAR(255),
+  issued_by VARCHAR(255),
+  result_table TEXT,
+  result_desc TEXT,
+  calibration_date VARCHAR(255),
+  doi_no VARCHAR(100),
+  remarks TEXT,
+  checksum VARCHAR(255)
+);
+
+-- Create individual registration table
+CREATE TABLE ind_reg (
+  ind_reg_id SERIAL PRIMARY KEY,
+  f_name VARCHAR(100),
+  l_name VARCHAR(100),
+  email VARCHAR(255) UNIQUE,
+  alt_email VARCHAR(255) UNIQUE,
+  mobile_no VARCHAR(20),
+  addr_1 TEXT,
+  addr_2 TEXT,
+  country VARCHAR(100),
+  state VARCHAR(100),
+  city VARCHAR(100),
+  pincode VARCHAR(15),
+  password VARCHAR(255)
+);
+
+-- Insert sample records into ind_reg
+INSERT INTO ind_reg (f_name, l_name, email, alt_email, mobile_no, addr_1, addr_2, country, state, city, pincode, password)
+VALUES 
+('John', 'Doe', 'john.doe@example.com', 'john.doe.alt@example.com', '9876543210', '123 Main St', 'Apt 101', 'USA', 'California', 'Los Angeles', '90001', 'password123'),
+('Alice', 'Smith', 'alice.smith@example.com', 'alice.smith.alt@example.com', '9871234560', '456 Oak Ave', 'Suite 202', 'USA', 'New York', 'New York City', '10001', 'password456'),
+('Michael', 'Johnson', 'michael.johnson@example.com', 'michael.johnson.alt@example.com', '9879876543', '789 Elm Blvd', '', 'USA', 'Texas', 'Houston', '77002', 'password789'),
+('Emily', 'Brown', 'emily.brown@example.com', 'emily.brown.alt@example.com', '9878765432', '321 Pine Rd', '', 'USA', 'Florida', 'Miami', '33101', 'passwordabc'),
+('David', 'Martinez', 'david.martinez@example.com', 'david.martinez.alt@example.com', '9877654321', '567 Cedar Ln', 'Unit 303', 'USA', 'Illinois', 'Chicago', '60601', 'passwordxyz'),
+('Sophia', 'Garcia', 'sophia.garcia@example.com', 'sophia.garcia.alt@example.com', '9876543210', '234 Birch St', '', 'USA', 'Ohio', 'Columbus', '43085', 'password123'),
+('James', 'Lopez', 'james.lopez@example.com', 'james.lopez.alt@example.com', '9879876543', '876 Maple Ave', 'Apt 405', 'USA', 'Washington', 'Seattle', '98101', 'password456'),
+('Emma', 'Gonzalez', 'emma.gonzalez@example.com', 'emma.gonzalez.alt@example.com', '9878765432', '789 Walnut Dr', '', 'USA', 'Massachusetts', 'Boston', '02108', 'password789'),
+('William', 'Wilson', 'william.wilson@example.com', 'william.wilson.alt@example.com', '9877654321', '432 Pine Ln', '', 'USA', 'Pennsylvania', 'Philadelphia', '19103', 'passwordabc'),
+('Olivia', 'Rodriguez', 'olivia.rodriguez@example.com', 'olivia.rodriguez.alt@example.com', '9876543210', '567 Elm St', 'Suite 501', 'USA', 'Georgia', 'Atlanta', '30303', 'passwordxyz');
+
+-- Create organization registration table
+CREATE TABLE org_reg (
+  org_reg_id SERIAL PRIMARY KEY,
+  org_type VARCHAR(40),
+  org_name VARCHAR(255),
+  gst_no VARCHAR(20),
+  email VARCHAR(255) UNIQUE,
+  alt_email VARCHAR(255) UNIQUE,
+  phone VARCHAR(20),
+  landline VARCHAR(20),
+  addr_1 TEXT,
+  country VARCHAR(100),
+  state VARCHAR(100),
+  city VARCHAR(100),
+  pincode VARCHAR(15),
+  password VARCHAR(255)
+);
+
+-- Insert sample records into org_reg
+INSERT INTO org_reg (org_type, org_name, gst_no, email, alt_email, phone, landline, addr_1, country, state, city, pincode, password)
+VALUES 
+('Private Limited', 'ABC Company Pvt Ltd', 'GST1234567', 'info@abccompany.com', 'contact@abccompany.com', '9876543210', '022-12345678', '789 Main Rd', 'India', 'Maharashtra', 'Mumbai', '400001', 'password123'),
+('Public Limited', 'XYZ Corporation Ltd', 'GST9876543', 'info@xyzcorp.com', 'contact@xyzcorp.com', '9871234560', '011-98765432', '456 Oak St', 'India', 'Delhi', 'New Delhi', '110001', 'password456'),
+('Partnership Firm', 'LMN Partners', 'GST4567890', 'info@lmnpartners.com', 'contact@lmnpartners.com', '9879876543', '033-87654321', '321 Elm Ave', 'India', 'West Bengal', 'Kolkata', '700001', 'password789'),
+('Sole Proprietorship', 'PQR Enterprises', 'GST2345678', 'info@pqrenterprises.com', 'contact@pqrenterprises.com', '9878765432', '044-76543210', '567 Pine Blvd', 'India', 'Tamil Nadu', 'Chennai', '600001', 'passwordabc'),
+('Limited Liability Partnership', 'EFG LLP', 'GST3456789', 'info@efgllp.com', 'contact@efgllp.com', '9877654321', '080-65432109', '234 Cedar Rd', 'India', 'Karnataka', 'Bangalore', '560001', 'passwordxyz'),
+('Private Limited', 'RST Solutions Pvt Ltd', 'GST5678901', 'info@rstsolutions.com', 'contact@rstsolutions.com', '9876543210', '022-12345678', '789 Maple Dr', 'India', 'Goa', 'Panaji', '403001', 'password123'),
+('Public Limited', 'UVW Corporation Ltd', 'GST7890123', 'info@uvwcorp.com', 'contact@uvwcorp.com', '9871234560', '011-98765432', '456 Birch Ln', 'India', 'Gujarat', 'Ahmedabad', '380001', 'password456'),
+('Partnership Firm', 'XYZ Partners', 'GST8901234', 'info@xyzpartners.com', 'contact@xyzpartners.com', '9879876543', '033-87654321', '321 Cedar Dr', 'India', 'Rajasthan', 'Jaipur', '302001', 'password789'),
+('Sole Proprietorship', 'LMN Enterprises', 'GST0123456', 'info@lmnenterprises.com', 'contact@lmnenterprises.com', '9878765432', '044-76543210', '567 Elm Rd', 'India', 'Uttar Pradesh', 'Lucknow', '226001', 'passwordabc'),
+('Limited Liability Partnership', 'PQR LLP', 'GST2345678', 'info@pqrllp.com', 'contact@pqrllp.com', '9877654321', '080-65432109', '234 Pine Blvd', 'India', 'Bihar', 'Patna', '800001', 'passwordxyz');
+
+-- Create employee registration table
+CREATE TABLE emp_reg (
+  emp_reg_id SERIAL PRIMARY KEY,
+  f_name VARCHAR(100),
+  l_name VARCHAR(100),
+  emp_id VARCHAR(255),
+  email VARCHAR(255) UNIQUE,
+  mobile_no VARCHAR(20),
+  designation VARCHAR(50),
+  addr_1 TEXT,
+  password VARCHAR(255),
+  signature BYTEA
+);
+
+-- Insert sample record into emp_reg
+INSERT INTO emp_reg (f_name, l_name, emp_id, email, mobile_no, designation, addr_1, password)
+VALUES ('John', 'Doe', 'EMP001', 'john.doe@example.com', '1234567890', 'Employee', '123 Example St', 'password123');
+
+-- Create customer registration table
+CREATE TABLE cust_reg (
+  cust_reg_id SERIAL PRIMARY KEY,
+  cust_type VARCHAR(40),
+  gst_no CHAR(15),
+  cust_name VARCHAR(100),
+  cust_email VARCHAR(255) UNIQUE,
+  alt_email VARCHAR(255) UNIQUE,
+  mobile_no VARCHAR(20),
+  landline_no VARCHAR(20),
+  cust_addr_1 TEXT,
+  cust_addr_2 TEXT,
+  country VARCHAR(100),
+  state VARCHAR(100),
+  city VARCHAR(100),
+  pincode VARCHAR(15),
+  password VARCHAR(255)
+);
+
+-- Create meteorological classification table
+CREATE TABLE meteorological_classification (
+  id SERIAL,
+  service_types VARCHAR(255),
+  service_name VARCHAR(255),
+  service_code VARCHAR(50) PRIMARY KEY
+);
+
+-- Insert sample records into meteorological_classification
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Mass Standards', 'cd1_01');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Length, Dimension and Nanometrology', 'cd1_02');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Temperature & Humidity Metrology', 'cd1_03');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Optical Radiation Metrology', 'cd1_04');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Force and Hardness Standards', 'cd1_05');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Pressure, Vaccum and Ultrasonic Metrology', 'cd1_06a');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Acoustics & Vibration Stds', 'cd1_07');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Fluid Flow Metrology (Gas Flow)', 'cd1_08b');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Fluid Flow Metrology (Water Flow)', 'cd1_08c');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'DC Voltage ,DC Current, DC resistance & DC Charge', 'cd2_01a');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'LF, HF Impedance & DC Metrology (Capacitance, Inductance, AC Resistance, AC Voltage Ratio, Dissipation Factor, LCR (Meter / Bridge))', 'cd2_01b');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'LF, HF Impedance & DC Metrology (DC High Voltage (>1 kV), DC High Voltage Divider Ratio, DC High Current & DC Low Resistance)', 'cd2_01c');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'High Voltage & Current Metrology Section', 'cd2_02');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'AC Power & Energy Metrology', 'cd2_03');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Quantum Hall Resistance Standards', 'cd2_05');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Atmospheric Science & Metrology', 'cd3_01');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Gas Metrology', 'cd3_02');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Defibrillator Analyser & Defibrillator Machine Standard', 'cd3_03');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Time & Frequency Standard', 'cd6_01');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'LF & HF Voltage, Current and Microwave Metrology (AC Voltage, AC Current, Frequency, AC-DC Voltage Transfer Difference, AC-DC Current Transfer Difference and AC-DC Voltage & Force)', 'cd6_02a');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'LF & HF Voltage, Current and Microwave Metrology (Frequency, RF Voltage,Microwave Power, Effective Efficiency, Calibration Factor, Voltage Amplitude, AC Voltage & Frequency and Voltage Amplitude & Frequency)', 'cd6_02b');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'LF & HF Voltage, Current and Microwave Metrology', 'cd6_02c');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'LF & HF Voltage, Current and Microwave Metrology (DC Voltage)', 'cd6_02d');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Electromagnetic Metrology Section (Microwave Metrology)', 'cd6_03a');
+INSERT INTO meteorological_classification (service_types, service_name, service_code) VALUES ('Calibration Charges', 'Electromagnetic Metrology Section (Magnetic Metrology)', 'cd6_03b');
+
+-- Create meteorological_services table
+CREATE TABLE meteorological_services (
+    si_no SERIAL,
+    service_code VARCHAR(255),
+    parameter VARCHAR(255),
+    item_type_group VARCHAR(255),
+    item_name VARCHAR(255),
+    alias_name VARCHAR(255),
+    range VARCHAR(255),
+    calibration_parameters VARCHAR(255),
+    no_of_points_for_calibration_procedure_no VARCHAR(255),
+    limitation_condition VARCHAR(255),
+    PRIMARY KEY (si_no, service_code)
+);
+
+ALTER TABLE meteorological_services
+ADD CONSTRAINT fk_service_code
+FOREIGN KEY (service_code) REFERENCES meteorological_classification(service_code);
+
+-- Create meteorological_services_charges table
+CREATE TABLE meteorological_services_charges (
+    si_no SERIAL,
+    service_code VARCHAR(255),
+    charges_per_item_rs VARCHAR(255),
+    additional_charges_rs VARCHAR(255),
+    description_for_additional_charges TEXT,
+    remarks_if_any TEXT,
+    normal VARCHAR(255),
+    tatkal VARCHAR(255),
+    edc VARCHAR(255),
+    PRIMARY KEY (si_no, service_code)
+);
+
+ALTER TABLE meteorological_services_charges
+ADD CONSTRAINT fk_si_no_service_code
+FOREIGN KEY (si_no, service_code) 
+REFERENCES meteorological_services(si_no, service_code);
+
+-- Create dcc_pdf table
+CREATE TABLE dcc_pdf (
+    pdf_serial_id SERIAL PRIMARY KEY,
+    pdf_directory VARCHAR(255),
+    current_stage INT,
+    calibrated_by VARCHAR(255),
+    checked_by VARCHAR(255),
+    scientist_in_charge VARCHAR(255),
+    issued_by VARCHAR(255),
+    version INT,
+    remarks TEXT
+);

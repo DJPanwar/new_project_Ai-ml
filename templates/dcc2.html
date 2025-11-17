@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dcc2.css') }}"
+    />
+    <title>DCC Registraion Form</title>
+  </head>
+  <body>
+    <header>
+      <img
+        src="{{ url_for('static', filename='images/logo1.png') }}"
+        alt="National Physical Laboratory Logo"
+        class="logo"
+      />
+      <div>
+        <h1 class="page-title">CSIR - National Physical Laboratory</h1>
+        <h3 class="page-subtitle">सी एस आई आर - राष्ट्रीय भौतिक प्रयोगशाला</h3>
+      </div>
+      <img
+        class="company-name"
+        src="{{ url_for('static', filename='images/logo2.png') }}"
+        alt="CSIR - NPL"
+      />
+    </header>
+    <!-- Navigation -->
+    <nav class="p-2">
+      <a href="/empwelcome">Home</a>
+    </nav>
+
+    <!-- Container -->
+    <div class="container">
+        <h2>Select Certificate Type</h2>
+        <form id="certificateForm" method="post" enctype="multipart/form-data">
+            <label for="certificateType">Type of Certificate:</label>
+            <select id="certificateType" name="certificateType">
+                <option value="">Select an option</option>
+                <option value="calibration">Calibration Certificate</option>
+                <option value="testing">Testing Certificate</option>
+                <!-- <option value="bnd">BND Certificate</option> -->
+            </select>
+            <div class="download-template">
+                <label>Download Excel Template:</label>
+                <button type="button" onclick="downloadTemplate()">Download</button>
+            </div>
+            <div class="upload-excel">
+                <label for="excelFile">Upload Excel:</label>
+                <input type="file" id="excelFile" name="excelFile" accept=".xls,.xlsx">
+            </div>
+            <div class="checkbox">
+                <label for="to_embed">Embed data in PDF: </label>
+                <input type="checkbox" id="to_embed" name="embed" value="False">
+            </div>
+            <div class="checkbox">
+                <label for="attach_graph">Add Graph in PDF: </label>
+                <input type="checkbox" id="attach_graph" name="graph" value="False" onclick="toggleGraphUpload()">
+            </div>
+            <div class="upload-graph" id="uploadGraph" style="display: none;">
+                <label for="graphFile">Upload Graph Image:</label>
+                <input type="file" id="graphFile" name="graphImg" accept=".png, .jpg, .jpeg">
+            </div>
+            <button type="button" class="button" onclick="submitForm()">
+                <span class="button_text">Generate PDF</span>
+            </button>
+        </form>
+    </div>
+    <footer class="footer bg-light text-dark text-center py-3">
+        <a href="{{ url_for('logout')}}">Logout</a>
+    </footer>
+
+    <script>
+        function downloadTemplate() {
+            const certificateType = document.getElementById('certificateType').value;
+            window.location.href = `/download-template/${certificateType}`;
+        }
+
+        function toggleGraphUpload() {
+            const graphCheckbox = document.getElementById('attach_graph');
+            const uploadGraphDiv = document.getElementById('uploadGraph');
+            if (graphCheckbox.checked) {
+                graphCheckbox.value = 'True';
+                uploadGraphDiv.style.display = 'block';
+            } else {
+                uploadGraphDiv.style.display = 'none';
+            }
+        }
+
+        function submitForm() {
+            const form = document.getElementById('certificateForm');
+            const toEmbed = document.getElementById('to_embed');
+            const theButton = document.querySelector(".button");
+
+            theButton.addEventListener("click", () => {
+                theButton.classList.add("button--loading");
+            });
+            
+            if (toEmbed.checked) {
+                toEmbed.value = 'True';
+            }
+
+            const formData = new FormData(form);
+            fetch('/upload-excel', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.status == 201) {
+                        alert('PDF already exists.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                theButton.classList.remove("button--loading");
+                if (data.status == 200) {
+                    alert('PDF Generated successfully!');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+    </body>
+</html>
+

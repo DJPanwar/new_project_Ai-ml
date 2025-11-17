@@ -1,0 +1,192 @@
+body {
+    height: 100vh;
+  }
+  
+  
+  header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: whitesmoke;
+  }
+  
+  .logo {
+    width: 10rem;
+  }
+  
+  .page-title {
+    text-align: center;
+    font-size: 3rem;
+    margin: 0;
+  }
+  
+  .page-subtitle {
+    text-align: center;
+    color: rgb(11, 78, 179);
+    margin: 0;
+  }
+  
+  .company-name {
+    font-style: italic;
+    font-size: 3rem;
+    color: blue;
+  }
+  
+  nav {
+    background-color: skyblue;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  nav a{
+    padding: 0.75rem;
+    display: block;
+    text-decoration: none;
+    background-color: none;
+    color: blue;
+    text-align: center;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  nav a:hover {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px blue;
+  }
+  
+  .dropdown {
+    display: inline-block; 
+    position: relative;
+  }
+  
+  .dropdown-toggle {
+    padding: 0.75rem;
+    display: block;
+    text-decoration: none;
+    background-color: transparent;
+    color: blue !important;
+    text-align: center;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .dropdown-menu {
+    float: none;
+    overflow: auto;
+    min-width: 100%; 
+    position: absolute;
+    background-color: whitesmoke; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+    border-radius: 0.5rem; 
+  }
+  
+  .dropdown-menu a {
+    padding: 0.75rem 1.25rem;
+    display: block;
+    text-decoration: none;
+    color: #212529;
+    white-space: nowrap;
+    border-bottom: 0;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #e9ecef;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px blue;
+  }
+
+  .custom-btn-secondary.btn-secondary {
+    border-color: transparent;
+    color: blue !important;
+  }
+  .custom-btn-secondary.btn-secondary:hover {
+    background-color: transparent;
+    color: blue !important;
+  }
+  
+  .caps {
+    text-transform: lowercase;
+  }
+  
+  .caps::first-letter {
+    text-transform: uppercase;
+  }
+  
+  main {
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  .textarea {
+    box-sizing: border-box;
+    width: 80%;
+    
+    margin: 2% 10%;
+  }
+
+  textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1%;
+  }
+
+  object {
+    height: 70vh;
+  }
+
+  .remark-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .remark-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .campus-img{
+    width: 100%; 
+    height: 65vh; 
+  }
+  
+  footer {
+    background-color: whitesmoke;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+    /* position: fixed; */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    
+  }
+ 
+  
+  footer a {
+    padding: 0.75rem;
+    display: block;
+    text-decoration: none;
+    background-color: none;
+    color: red;
+    text-align: center;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  footer a:hover {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px red;
+  }  

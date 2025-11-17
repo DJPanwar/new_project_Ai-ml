@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+</head>
+<body>
+    <header>
+        <img
+          src="{{ url_for('static', filename='images/logo1.png') }}"
+          alt="National Physical Laboratory Logo"
+          class="logo"
+        />
+        <div>
+          <h1 class="page-title">CSIR - National Physical Laboratory</h1>
+          <h3 class="page-subtitle">सी एस आई आर - राष्ट्रीय भौतिक प्रयोगशाला</h3>
+        </div>
+        <img
+          class="company-name"
+          src="{{ url_for('static', filename='images/logo2.png') }}"
+          alt="CSIR - NPL"
+        />
+      </header>
+      <style>
+      body {
+        height: 100vh;
+      }
+      
+      
+      header {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background: orange;
+      }
+      
+      .logo {
+        width: 10rem; /* Adjust the width as needed */
+      }
+      
+      .page-title {
+        text-align: center;
+        font-size: 3rem;
+        margin: 0;
+      }
+      
+      .page-subtitle {
+        text-align: center;
+        color: rgb(11, 78, 179);
+        margin: 0;
+      }
+      
+      .company-name {
+        font-style: italic;
+        font-size: 1rem;
+        color: blue;
+      }
+      .section {
+            padding: 5px;
+            text-align: center;
+            background-color: rgb(24, 163, 24) ;
+        }
+
+        .bottom-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .bottom-bar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .bottom-bar ul li {
+            margin-right: 20px;
+        }
+        .bottom-bar ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+        .bottom-bar ul li a:hover {
+            background-color: #716f6c;
+        }
+        footer {
+            background-color: #8d8888;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+      
+
+        .vertical-section ul {
+                    list-style-type:none;
+                    padding: 0;
+                    
+        }
+
+.vertical-section ul li {
+    margin-bottom: 20px; /* Adjust spacing between list items */
+}
+
+.vertical-section ul li a {
+    text-decoration: none; /* Remove underline from links */  
+    color: #3d2cd7; /* Set link color */
+    text-align: center;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition on hover */
+}
+
+.vertical-section ul li a:hover {
+    background-color: #f9f9f9; /* Background color on hover */
+    color: #333; /* Text color on hover */
+}
+
+.vertical-section h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+      nav  
+        {
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin: 0 10px;
+        }
+        
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #ddd;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            width: 200px;
+            text-align: left;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar-container">
+    <nav>
+        <ul>
+            <li class="dropdown">
+                <a href="#">Home</a>
+            </li>
+            <li class="dropdown">
+                <a href="#">About us</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Our Director</a></li>
+                    <li><a href="#">Glimpses of CSIR-NPL</a></li>
+                    <li><a href="#">NPL Charter</a></li>
+                    <li><a href="#">Vision & Mission</a></li>
+                    <li><a href="#">Organisational Structure</a></li>
+                    <li><a href="#">Research Council</a></li>
+                    <li><a href="#">Management Council</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Science & Technology</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Physico Mechanical Metrology</a></li>
+                    <li><a href="#">Electrical & Electronics Metrology</a></li>
+                    <li><a href="#">Environmental Science & Biomedical Metrology</a></li>
+                    <li><a href="#">Advanced Materials & Device Metrology</a></li>
+                    <li><a href="#">Bhartiya Nirdeshak Dravya (BND): Indian Reference Material</a></li>
+                    <li><a href="#">Indian Standard Time</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Academic Programs</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Ph.D Programs</a></li>
+                    <li><a href="#">PMQC</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Services</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">NPL Outreach for National Development</a></li>
+                    <li><a href="#">Planning, Monitoring & Evaluation Group</a></li>
+                    <li><a href="#">Business Development Group</a></li>
+                    <li><a href="#">Intellectual Property Right Group</a></li>
+                    <li><a href="#">Knowledge Resource Centre</a></li>
+                    <li><a href="#">Human Resource Development</a></li>
+                    <li><a href="#">Workshop</a></li>
+                </ul>
+                
+            </li>
+            <li><a href="#">Calibration & Testing</a></li>
+            <li class="dropdown">
+                <a href="#">Institutional Resources</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Annual Report</a></li>
+                    <li><a href="#">Papers Published</a></li>
+                    <li><a href="#">Diamond Jubilee Volume</a></li>
+                    <li><a href="#">A Compendium of Scientific Triumps</a></li>
+                    <li><a href="#">CSIR Women Achievers in STEM</a></li>
+                    <li><a href="#">IR@NPL</a></li> 
+                    <li><a href="#">Samiksha</a></li> 
+                    <li><a href="#">Educate&Explore</a></li> 
+                </ul>
+                <!-- Add your dropdown content here -->
+            </li>
+            <li><a href="#">Achievements</a></li>
+            <li class="dropdown">
+                <a href="#">Important Links</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">email.gov.in</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Intranet</a></li>
+                    <li><a href="#">CSIR Web Portals</a></li>
+                    <li><a href="#">One CSIR</a></li>
+                    <li><a href="#">ACSIR</a></li> 
+                    <li><a href="#">NPL Former Scientists Forum</a></li> 
+                    <li><a href="#">Downloads</a></li> 
+                </ul>
+            </li>
+            <li><a href="#">Administration</a></li>
+        </ul>
+    </nav>
+ </div>
+
+    <section class="section" id="Contact-us">
+        <h2>Contact Us</h2>
+        <!-- Add more content about About Us -->
+    </section>
+    
+    <section class="vertical-section">
+        <ul>
+            <li><a href="#"><h1>Postal Address</a></li></h1>
+            <li><a href="#"><h1>Director Office</a></li></h1>
+            <li><a href="#"><h1>Controller of Administration (COA)</a></li></h1>
+            <li><a href="#"><h1>Scientific & Technical Divisions</a></li></h1>
+            <li><a href="#"><h1>Business Development Group (BDG)</a></li></h1>
+            <li><a href="#"><h1>Intellectual Property Right (IPR)</a></li></h1>
+            <li><a href="#"><h1>Human Resource Development (HRD) & AcSIR</a></li></h1>
+            <li><a href="#"><h1>Knowledge Resource Centre (KRC)</a></li></h1>
+            <li><a href="#"><h1>Rajbhasha Unit</a></li></h1>
+            <li><a href="#"><h1>Central Workshop</a></li></h1>
+            <li><a href="#"><h1>Finance & Accounts</a></li></h1>
+            <li><a href="#"><h1>Stores & Purchase</a></li></h1>
+            <li><a href="#"><h1>Administration</a></li></h1>
+            <li><a href="#"><h1>Work & Services</a></li></h1>
+            <li><a href="#"><h1>Horticulture</a></li></h1>
+            <li><a href="#"><h1>Guest House & Cafeteria</a></li></h1>
+            <li><a href="#"><h1>Security</a></li></h1>
+            <li><a href="#"><h1>Transport</a></li></h1>
+            <li><a href="#"><h1>Main Gate</a></li></h1>
+            <li><a href="#"><h1>CSIR-NPL Telephone Directory</a></li></h1>
+
+        </ul>
+    </section>
+
+    <div class="bottom-bar">
+        <ul>
+            <li><a href="#">People@NPL-CSIR</a></li>
+            <li><a href="#">Tenders pic</a></li>
+            <li><a href="#">RTI</a></li>
+            <li><a href="#">Website policies</a></li>
+            <li><a href="#">Cyber Jagrookta</a></li>
+            <li><a href="#">Local Grievance Committee</a></li>
+            <li><a href="#">Handling of Sexual Harassment Complaints</a></li>
+            <li><a href="#">NPL Club</a></li>
+            <li><a href="#">Site map</a></li>
+            <li><a href="#">Contact us</a></li>
+        </ul>
+    </div>
+
+
+
+    <footer>
+        <p>Copyright © 2024 NPL | Powered by NPL<br>
+        All Rights Reserved - The Official Website of CSIR-National Physical Laboratory, CSIR, under Ministry of S & T, Govt. of India<br>
+        Site Designed & Managed by Knowledge Resource Centre<br>
+        CSIR-NPL, New Delhi<br>
+        India</p>
+    </footer>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+        <img src="youtube_icon.png" alt="YouTube" style="width: 30px; height: 30px; margin-right: 10px;">
+    </a>
+    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+        <img src="twitter_icon.png" alt="Twitter" style="width: 30px; height: 30px; margin-right: 10px;">
+    </a>
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+        <img src="facebook_icon.png" alt="Facebook" style="width: 30px; height: 30px; margin-right: 10px;">
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+        <img src="instagram_icon.png" alt="Instagram" style="width: 30px; height: 30px; margin-right: 10px;">
+    </a>
+    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+        <img src="linkedin_icon.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+    </a>
+</div>
+
+
+
+    <!-- Rest of your content -->
+
+</body>
+</html>
+
+    
+</body>
+</html>
